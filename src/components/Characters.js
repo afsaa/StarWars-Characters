@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+import "./style/Characters.css";
+
 const Characters = props => {
   const URL = `https://swapi.co/api/people/`;
   const [executed, setExecuted] = useState(false);
@@ -17,8 +19,8 @@ const Characters = props => {
         })
         .then(data => {
           setCharacters(data.results);
-          console.log(data.results);
         });
+      updateCharacters();
       setExecuted(true);
     }
   }
@@ -41,11 +43,16 @@ const Characters = props => {
   useEffect(() => {
     getData();
     updateCharacters();
-  }, [count]);
+  }, [count, characters]);
 
   return (
     <div className="Characters__container">
-      <button id="leftBtn" disabled={count === 0} onClick={e => handleClick(e)}>
+      <button
+        id="leftBtn"
+        className="btn btn-primary"
+        disabled={count === 0}
+        onClick={e => handleClick(e)}
+      >
         Previous Character
       </button>
       <div className="Characters__container-text">
@@ -53,6 +60,7 @@ const Characters = props => {
       </div>
       <button
         id="rightBtn"
+        className="btn btn-primary"
         disabled={count === characters.length - 1}
         onClick={e => handleClick(e)}
       >
