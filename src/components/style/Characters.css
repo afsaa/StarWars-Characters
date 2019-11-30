@@ -4,15 +4,19 @@
 
 .Characters__container {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  align-content: center;
   justify-content: center;
+  position: "absolute";
+  left: "50%";
+  top: "50%";
+  transform: "translate(-50%, -50%)";
 }
 
 .Characters__container-text {
-  margin: 0.7rem 0.2rem;
+  width: max-content;
+  margin: 0.7rem 0.3rem;
   font-family: "Bebas Neue", cursive;
+  color: #ffffff;
 }
 
 .Characters__container-text h3 {
