@@ -46,15 +46,7 @@ const Characters = props => {
   }, [count, characters]);
 
   return (
-    <div
-      className="Characters__container"
-      style={{
-        position: "absolute",
-        left: "50%",
-        top: "50%",
-        transform: "translate(-50%, -50%)"
-      }}
-    >
+    <div className="Characters__container">
       <button
         id="leftBtn"
         className="btn btn-primary"
