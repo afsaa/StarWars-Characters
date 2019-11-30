@@ -23,6 +23,12 @@ const Characters = props => {
     }
   }
 
+  function updateCharacters() {
+    setPrevCharacter(characters[count - 1]);
+    setCurrentCharacter(characters[count]);
+    setNextCharacter(characters[count + 1]);
+  }
+
   function handleClick(e) {
     if (e.target.id === "leftBtn") {
       setCount(count - 1);
@@ -34,17 +40,15 @@ const Characters = props => {
 
   useEffect(() => {
     getData();
-    setPrevCharacter(characters[count - 1]);
-    setCurrentCharacter(characters[count]);
-    setNextCharacter(characters[count + 1]);
+    updateCharacters();
   }, [count]);
 
   return (
-    <div>
+    <div className="Characters__container">
       <button id="leftBtn" disabled={count === 0} onClick={e => handleClick(e)}>
         Previous Character
       </button>
-      <div>
+      <div className="Characters__container-text">
         <h3>{currentCharacter ? currentCharacter.name : ""}</h3>
       </div>
       <button
