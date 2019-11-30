@@ -1,0 +1,21 @@
+.btn-primary {
+  margin: 0.5rem;
+}
+
+.Characters__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+.Characters__container-text {
+  margin: 0.7rem 0.2rem;
+  font-family: "Bebas Neue", cursive;
+}
+
+.Characters__container-text h3 {
+  margin: 0;
+  font-size: xx-large;
+}
