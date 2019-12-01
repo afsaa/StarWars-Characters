@@ -64,7 +64,7 @@ const Characters = props => {
           <Emoji symbol="⬅" /> Previous Character
         </button>
         <div className="Characters__container-text">
-          <h3>{currentCharacter ? currentCharacter.name : ""}</h3>
+          <h1>{currentCharacter ? currentCharacter.name : ""}</h1>
         </div>
         <button
           id="rightBtn"
