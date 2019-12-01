@@ -2,14 +2,25 @@
   margin: 0.5rem;
 }
 
+.btn-success {
+  margin: 10px 10px 10px 30px;
+}
+
 .Characters__container {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+
+.Characters__container > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .Characters__container-text {

@@ -3,22 +3,28 @@ import React, { useState, useEffect } from "react";
 import "./style/Characters.css";
 
 const Characters = props => {
-  const URL = `https://swapi.co/api/people/`;
+  let URL = `https://swapi.co/api/people/`;
   const [executed, setExecuted] = useState(false);
   const [count, setCount] = useState(0);
   const [characters, setCharacters] = useState([]);
   const [prevCharacter, setPrevCharacter] = useState({});
   const [currentCharacter, setCurrentCharacter] = useState({});
   const [nextCharacter, setNextCharacter] = useState({});
+  const [nextPage, setNextPage] = useState("");
 
   function getData() {
     if (!executed) {
+      if (nextPage !== "") {
+        URL = nextPage;
+        setCount(0);
+      }
       fetch(URL)
         .then(function(response) {
           return response.json();
         })
         .then(data => {
           setCharacters(data.results);
+          setNextPage(data.next);
         });
       updateCharacters();
       setExecuted(true);
@@ -43,29 +49,48 @@ const Characters = props => {
   useEffect(() => {
     getData();
     updateCharacters();
-  }, [count, characters]);
+  }, [count, characters, executed]);
 
   return (
     <div className="Characters__container">
-      <button
-        id="leftBtn"
-        className="btn btn-primary"
-        disabled={count === 0}
-        onClick={e => handleClick(e)}
-      >
-        Previous Character
-      </button>
-      <div className="Characters__container-text">
-        <h3>{currentCharacter ? currentCharacter.name : ""}</h3>
+      <div>
+        <button
+          id="leftBtn"
+          className="btn btn-primary"
+          disabled={count === 0}
+          onClick={e => handleClick(e)}
+        >
+          <span role="img" aria-label="left-arrow">
+            ⬅
+          </span>{" "}
+          Previous Character
+        </button>
+        <div className="Characters__container-text">
+          <h3>{currentCharacter ? currentCharacter.name : ""}</h3>
+        </div>
+        <button
+          id="rightBtn"
+          className="btn btn-primary"
+          disabled={count === characters.length - 1}
+          onClick={e => handleClick(e)}
+        >
+          Next Character{" "}
+          <span role="img" aria-label="right-arrow">
+            ➡
+          </span>
+        </button>
       </div>
-      <button
-        id="rightBtn"
-        className="btn btn-primary"
-        disabled={count === characters.length - 1}
-        onClick={e => handleClick(e)}
-      >
-        Next Character
-      </button>
+      <div>
+        <button
+          className="btn btn-success btn-lg btn-block"
+          onClick={() => setExecuted(false)}
+        >
+          Get more characters{" "}
+          <span role="img" aria-label="plus">
+            ➕
+          </span>
+        </button>
+      </div>
     </div>
   );
 };
