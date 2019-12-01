@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Emoji from "./Emoji";
 
 import "./style/Characters.css";
 
@@ -60,10 +61,7 @@ const Characters = props => {
           disabled={count === 0}
           onClick={e => handleClick(e)}
         >
-          <span role="img" aria-label="left-arrow">
-            ⬅
-          </span>{" "}
-          Previous Character
+          <Emoji symbol="⬅" /> Previous Character
         </button>
         <div className="Characters__container-text">
           <h3>{currentCharacter ? currentCharacter.name : ""}</h3>
@@ -74,10 +72,7 @@ const Characters = props => {
           disabled={count === characters.length - 1}
           onClick={e => handleClick(e)}
         >
-          Next Character{" "}
-          <span role="img" aria-label="right-arrow">
-            ➡
-          </span>
+          Next Character <Emoji symbol="➡" />
         </button>
       </div>
       <div>
@@ -85,10 +80,7 @@ const Characters = props => {
           className="btn btn-success btn-lg btn-block"
           onClick={() => setExecuted(false)}
         >
-          Get more characters{" "}
-          <span role="img" aria-label="plus">
-            ➕
-          </span>
+          Get more characters <Emoji symbol="➕" />
         </button>
       </div>
     </div>
