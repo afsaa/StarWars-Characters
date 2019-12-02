@@ -33,3 +33,9 @@
 .Characters__container-text h1 {
   margin: 0;
 }
+
+@media (max-width: 425px) {
+  .Characters__container > div {
+    flex-direction: column;
+  }
+}
