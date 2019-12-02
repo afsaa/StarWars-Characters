@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Emoji from "./Emoji";
+import Loading from "./Loading";
 
 import "./style/Characters.css";
 
@@ -12,9 +13,11 @@ const Characters = props => {
   const [currentCharacter, setCurrentCharacter] = useState({});
   const [nextCharacter, setNextCharacter] = useState({});
   const [nextPage, setNextPage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   function getData() {
     if (!executed) {
+      setLoading(true);
       if (nextPage !== "") {
         URL = nextPage;
         setCount(0);
@@ -26,6 +29,7 @@ const Characters = props => {
         .then(data => {
           setCharacters(data.results);
           setNextPage(data.next);
+          setLoading(false);
         });
       updateCharacters();
       setExecuted(true);
@@ -64,7 +68,7 @@ const Characters = props => {
           <Emoji symbol="⬅" /> Previous Character
         </button>
         <div className="Characters__container-text">
-          <h1>{currentCharacter ? currentCharacter.name : ""}</h1>
+          {loading ? <Loading /> : <h1>{currentCharacter.name}</h1>}
         </div>
         <button
           id="rightBtn"
