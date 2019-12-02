@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/0bfe920b-d272-4ad4-a839-c2b451729a5e/deploy-status)](https://app.netlify.com/sites/ecstatic-elion-7a633d/deploys)
+
 # Star Wars Characters Using Hooks
 
 Here I´m using the Star Wars API and Hooks to learn how Hooks work, at least State and Effect.
