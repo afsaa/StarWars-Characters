@@ -7,7 +7,7 @@ body {
   background-image: url("./images/StarWars-BG.jpg");
   background-attachment: fixed;
   background-position: center;
-  background-repeat: repeat;
+  background-repeat: no-repeat;
   background-size: cover;
 }
 
