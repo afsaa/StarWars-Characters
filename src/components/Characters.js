@@ -5,7 +5,7 @@ import Loading from "./Loading";
 import "./style/Characters.css";
 
 const Characters = props => {
-  let URL = `https://swapi.co/api/people/`;
+  let URL = `https://swapi.dev/api/people/`;
   const [executed, setExecuted] = useState(false);
   const [count, setCount] = useState(0);
   const [characters, setCharacters] = useState([]);
