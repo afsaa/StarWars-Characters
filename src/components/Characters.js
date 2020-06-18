@@ -58,6 +58,7 @@ const Characters = props => {
   useEffect(() => {
     getData();
     updateCharacters();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [count, characters, executed]);
 
   return (
