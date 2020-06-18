@@ -22,7 +22,11 @@ const Characters = props => {
         URL = nextPage;
         setCount(0);
       }
-      fetch(URL)
+      fetch(URL, {
+        method: 'GET', 
+	      mode: 'cors',
+	      redirect: 'follow'
+      })
         .then(function(response) {
           return response.json();
         })
