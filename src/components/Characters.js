@@ -9,9 +9,7 @@ const Characters = props => {
   const [executed, setExecuted] = useState(false);
   const [count, setCount] = useState(0);
   const [characters, setCharacters] = useState([]);
-  const [prevCharacter, setPrevCharacter] = useState({});
   const [currentCharacter, setCurrentCharacter] = useState({});
-  const [nextCharacter, setNextCharacter] = useState({});
   const [nextPage, setNextPage] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -41,9 +39,7 @@ const Characters = props => {
   }
 
   function updateCharacters() {
-    setPrevCharacter(characters[count - 1]);
     setCurrentCharacter(characters[count]);
-    setNextCharacter(characters[count + 1]);
   }
 
   function handleClick(e) {
