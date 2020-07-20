@@ -6,7 +6,7 @@ import "./style/Characters.css";
 
 const Characters = (props) => {
   let BASE_URL =
-    `http://swapi.dev/api/people` || `https://swapi.dev/api/people`;
+    `http://swapi.dev/api/people/` || `https://swapi.dev/api/people/`;
   const [executed, setExecuted] = useState(false);
   const [count, setCount] = useState(0);
   const [characters, setCharacters] = useState([]);
