@@ -4,8 +4,8 @@ import Loading from "./Loading";
 
 import "./style/Characters.css";
 
-const Characters = props => {
-  let URL = `https://swapi.dev/api/people/`;
+const Characters = (props) => {
+  let BASE_URL = `https://swapi.dev/api/people`;
   const [executed, setExecuted] = useState(false);
   const [count, setCount] = useState(0);
   const [characters, setCharacters] = useState([]);
@@ -17,18 +17,18 @@ const Characters = props => {
     if (!executed) {
       setLoading(true);
       if (nextPage !== "") {
-        URL = nextPage;
+        BASE_URL = nextPage.replace("http", "https");
         setCount(0);
       }
-      fetch(URL, {
-        method: 'GET', 
-	      mode: 'cors',
-	      redirect: 'follow'
+      fetch(BASE_URL, {
+        method: "GET",
+        mode: "cors",
+        redirect: "follow",
       })
-        .then(function(response) {
+        .then(function (response) {
           return response.json();
         })
-        .then(data => {
+        .then((data) => {
           setCharacters(data.results);
           setNextPage(data.next);
           setLoading(false);
@@ -64,7 +64,7 @@ const Characters = props => {
           id="leftBtn"
           className="btn btn-primary"
           disabled={count === 0}
-          onClick={e => handleClick(e)}
+          onClick={(e) => handleClick(e)}
         >
           <Emoji symbol="⬅" /> Previous Character
         </button>
@@ -75,7 +75,7 @@ const Characters = props => {
           id="rightBtn"
           className="btn btn-primary"
           disabled={count === characters.length - 1}
-          onClick={e => handleClick(e)}
+          onClick={(e) => handleClick(e)}
         >
           Next Character <Emoji symbol="➡" />
         </button>
