@@ -34,8 +34,6 @@ const Characters = () => {
     if (people) {
       updateCurrentCharacter();
     }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [count, people]);
 
   return (
