@@ -1,61 +1,40 @@
-import React, { useState, useEffect } from "react";
-import Emoji from "./Emoji";
-import Loading from "./Loading";
+import React, { useState, useEffect } from 'react';
+import { usePeople } from '../hooks';
+import Emoji from './Emoji';
+import Loading from './Loading';
 
-import "./style/Characters.css";
+import './style/Characters.css';
 
-const Characters = (props) => {
-  let BASE_URL = `https://swapi.dev/api/people/`;
-  const [executed, setExecuted] = useState(false);
+const Characters = () => {
   const [count, setCount] = useState(0);
-  const [characters, setCharacters] = useState([]);
+  const [pageNumber, setPageNumber] = useState(1);
   const [currentCharacter, setCurrentCharacter] = useState({});
-  const [nextPage, setNextPage] = useState("");
-  const [loading, setLoading] = useState(false);
+  const { people, nextPage, isLoading } = usePeople(pageNumber);
 
-  function getData() {
-    if (!executed) {
-      setLoading(true);
-      if (nextPage !== "") {
-        BASE_URL = nextPage.replace("http", "https");
-        setCount(0);
-      }
-      fetch(BASE_URL, {
-        method: "GET",
-        mode: "cors",
-        redirect: "follow",
-      })
-        .then(function (response) {
-          return response.json();
-        })
-        .then((data) => {
-          setCharacters(data.results);
-          setNextPage(data.next);
-          setLoading(false);
-        });
-      updateCharacters();
-      setExecuted(true);
-    }
-  }
-
-  function updateCharacters() {
-    setCurrentCharacter(characters[count]);
+  function updateCurrentCharacter() {
+    setCurrentCharacter(people[count]);
   }
 
   function handleClick(e) {
-    if (e.target.id === "leftBtn") {
+    if (e.target.id === 'leftBtn') {
       setCount(count - 1);
     }
-    if (e.target.id === "rightBtn") {
+    if (e.target.id === 'rightBtn') {
       setCount(count + 1);
     }
   }
 
+  const handleNextPage = () => {
+    setCount(0);
+    setPageNumber(pageNumber + 1);
+    updateCurrentCharacter();
+  };
+
   useEffect(() => {
-    getData();
-    updateCharacters();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [count, characters, executed]);
+    if (people) {
+      updateCurrentCharacter();
+    }
+  }, [count, people]);
 
   return (
     <div className="Characters__container">
@@ -64,18 +43,18 @@ const Characters = (props) => {
           id="leftBtn"
           className="btn btn-primary"
           disabled={count === 0}
-          onClick={(e) => handleClick(e)}
+          onClick={handleClick}
         >
           <Emoji symbol="⬅" /> Previous Character
         </button>
         <div className="Characters__container-text">
-          {loading ? <Loading /> : <h1>{currentCharacter.name}</h1>}
+          {isLoading ? <Loading /> : <h1>{currentCharacter?.name}</h1>}
         </div>
         <button
           id="rightBtn"
           className="btn btn-primary"
-          disabled={count === characters.length - 1}
-          onClick={(e) => handleClick(e)}
+          disabled={count === people?.length - 1}
+          onClick={handleClick}
         >
           Next Character <Emoji symbol="➡" />
         </button>
@@ -83,7 +62,8 @@ const Characters = (props) => {
       <div>
         <button
           className="btn btn-success btn-lg btn-block"
-          onClick={() => setExecuted(false)}
+          onClick={handleNextPage}
+          disabled={nextPage === null}
         >
           Get more characters <Emoji symbol="➕" />
         </button>
