@@ -1,38 +1,61 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/0bfe920b-d272-4ad4-a839-c2b451729a5e/deploy-status)](https://app.netlify.com/sites/ecstatic-elion-7a633d/deploys)
+# StarWars-Characters
 
-# Star Wars Characters Using Hooks
+The StarWars-Characters repository is a simple React application that displays a list of characters from the Star Wars universe.
 
-Here I´m using the Star Wars API and Hooks to learn how Hooks work, at least State and Effect.
+## Features
 
-## What are hooks?
+- Displays a list of characters from Star Wars.
+- Allows users to search for characters by name.
+- Displays details about a character when a user clicks on their name.
+- Uses the [Star Wars API](https://swapi.dev/) to fetch character data.
 
-Hooks are new React functions to manage States, Effects and others to falicitate the readability and reuse of the components functionality.
+## Installation
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+To install and run the application locally, follow these steps:
 
-## Available Scripts
+1. Clone the repository:
 
-In the project directory, you can run:
+   ```
+   git clone https://github.com/afsaa/StarWars-Characters.git
+   ```
 
-### `npm start`
+2. Navigate to the project directory:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+   ```
+   cd StarWars-Characters
+   ```
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+3. Install dependencies:
 
-### `npm test`
+   ```
+   npm install
+   ```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+4. Start the development server:
 
-### `npm run build`
+   ```
+   npm start
+   ```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+5. Open the application in your web browser by navigating to [http://localhost:3000](http://localhost:3000).
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Usage
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To use the application, follow these steps:
+
+1. Enter a character name into the search bar to filter the list of characters.
+2. Click on a character's name to display their details.
+
+## Contributing
+
+If you would like to contribute to the project, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your changes.
+3. Make your changes and commit them to your branch.
+4. Push your changes to your fork.
+5. Submit a pull request to the main repository.
+
+## License
+
+The StarWars-Characters repository is licensed under the MIT License. See the [LICENSE](https://github.com/afsaa/StarWars-Characters/blob/main/LICENSE) file for more information.
