@@ -6,13 +6,13 @@
 }
 
 .Header h1 {
-  font-family: "Star Jedi Outline", "Days One", "Bebas Neue";
+  font-family: 'Star Jedi Outline', 'Days One', 'Bebas Neue';
   text-align: center;
   color: #ffffff;
 }
 
 @media (max-width: 425px) {
   .Header {
-    margin-top: 10vh;
+    margin-top: 5vh;
   }
 }

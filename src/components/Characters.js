@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { usePeople } from '../hooks';
+import StarWarsCard from './Card';
 import Emoji from './Emoji';
 import Loading from './Loading';
 
@@ -48,7 +49,14 @@ const Characters = () => {
           <Emoji symbol="⬅" /> Previous Character
         </button>
         <div className="Characters__container-text">
-          {isLoading ? <Loading /> : <h1>{currentCharacter?.name}</h1>}
+          {isLoading ? (
+            <Loading />
+          ) : (
+            <StarWarsCard
+              birthYear={currentCharacter?.birth_year}
+              {...currentCharacter}
+            />
+          )}
         </div>
         <button
           id="rightBtn"

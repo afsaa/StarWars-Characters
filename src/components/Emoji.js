@@ -13,7 +13,7 @@ const Emoji = ({ label, symbol }) => (
 );
 
 Emoji.propTypes = {
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
   symbol: PropTypes.string.isRequired,
 };
 
